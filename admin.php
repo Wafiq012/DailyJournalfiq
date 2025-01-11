@@ -28,7 +28,7 @@ if (!isset($_SESSION['username'])) {
     /> 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
     <!-- nav begin -->
     <nav class="navbar navbar-expand-sm bg-body-tertiary sticky-top bg-danger-subtle">
     <div class="container">
@@ -52,13 +52,19 @@ if (!isset($_SESSION['username'])) {
             <li class="nav-item">
                 <a class="nav-link" href="admin.php?page=articel">Article</a>
             </li> 
+            <li class="nav-item">
+                <a class="nav-link" href="admin.php?page=gallery">Gallery</a>
+            </li> 
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle text-danger fw-bold" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <?= $_SESSION['username']?>
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="logout.php">Logout</a></li> 
+                        <a class="nav-link dropdown-toggle text-danger fw-bold" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <?= $_SESSION['username'] ?>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="profileadmin.php">profil</a></li>
+                            <li><a class="dropdown-item" href="logout.php">Logout</a></li>
                 </ul>
+                
             </li> 
         </ul>
         </div>
@@ -86,20 +92,22 @@ if (!isset($_SESSION['username'])) {
 <!-- content end -->
  
     <!-- footer begin -->
-    <footer class="text-center p-5 bg-danger-subtle footer " style="height: 120px;  font-size: 18px;">
+    <footer id="footer" class="text-center py-5 bg-danger-subtle mt-auto">
     <div>
-        <a href="https://www.instagram.com/udinusofficial"
-        ><i class="bi bi-instagram h2 p-2 text-dark"></i
-        ></a>
-        <a href="https://twitter.com/udinusofficial"
-        ><i class="bi bi-twitter h2 p-2 text-dark"></i
-        ></a>
-        <a href="https://wa.me/+62812685577"
-        ><i class="bi bi-whatsapp h2 p-2 text-dark"></i
-        ></a>
+        <a href="https://www.instagram.com/udinusofficial">
+            <i class="bi bi-instagram h2 p-2 text-dark"></i>
+        </a>
+        <a href="https://twitter.com/udinusofficial">
+            <i class="bi bi-twitter h2 p-2 text-dark"></i>
+        </a>
+        <a href="https://wa.me/+62812685577">
+            <i class="bi bi-whatsapp h2 p-2 text-dark"></i>
+        </a>
     </div>
-    <div>Wafiq Febrian Prayitno &copy; 2023</div>
-    </footer>
+    <div>Wafiq Febrian Prayitno &copy; 2022</div>
+</footer>
+
+
     <!-- footer end -->
     <script
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"

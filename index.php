@@ -246,23 +246,29 @@ include "koneksi.php";
       <h1 class="fw-bold display-4 pb-3">Galery</h1>
       <div id="carouselExample" class="carousel slide">
         <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="https://imagenes.diariodenavarra.es/uploads/2022/05/29/6292a054ea2f0.jpeg" class="d-block w-100"
-              alt="...">
-          </div>
-          <div class="carousel-item">
-            <img src="https://wallpapercave.com/wp/wc1731393.jpg" class="d-block w-100" alt="...">
-          </div>
-          <div class="carousel-item">
-            <img src="http://wallpapercave.com/wp/wc1765158.jpg" class="d-block w-100" alt="...">
-          </div>
-          <div class="carousel-item">
-            <img src="https://cdn.wallpapersafari.com/82/49/37tPd0.jpg" class="d-block w-100" alt="...">
-          </div>
-          <div class="carousel-item">
-            <img src="https://cdn-2.tstatic.net/banjarmasin/foto/bank/images/real-madrid-skuad.jpg"
-              class="d-block w-100" alt="...">
-          </div>
+        <?php
+          // Query untuk mengambil data dari tabel gallery
+          $sql2 = "SELECT * FROM gallery ORDER BY tanggal DESC";
+          $hasil2 = $conn->query($sql2);
+
+          $active_class = "active"; // Kelas active untuk item pertama
+
+          if ($hasil2->num_rows > 0) {
+            while ($row = $hasil2->fetch_assoc()) {
+              $image_file = $row['gambar']; // Mengambil nama file dari kolom gambar
+              $image_url = "img/" . $image_file; // Gabungkan dengan path folder img
+              echo '
+                        <div class="carousel-item ' . $active_class . '">
+                            <img src="' . $image_url . '" class="d-block w-100" alt="Gallery Image" />
+                        </div>';
+              $active_class = ""; // Hapus kelas active untuk item berikutnya
+            }
+          } else {
+            echo '<div class="carousel-item active">
+                            <p>No images available in the gallery.</p>
+                        </div>';
+          }
+          ?>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
